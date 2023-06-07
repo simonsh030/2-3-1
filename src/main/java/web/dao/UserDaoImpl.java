@@ -1,6 +1,5 @@
 package web.dao;
 import web.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 
@@ -20,29 +19,29 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User> index() {
+    public List<User> getAllUsers() {
         return entityManager.createQuery("SELECT u FROM User u", User.class).getResultList();
     }
 
 
     @Override
-    public User show(int id) {
+    public User getUserById(int id) {
         return entityManager.find(User.class, id);
     }
 
     @Override
-    public void save(User user) {
+    public void saveUser(User user) {
         entityManager.persist(user);
     }
 
     @Override
-    public void update(User updatedUser) {
+    public void updateUser(User updatedUser) {
 
         entityManager.merge(updatedUser);
     }
 
     @Override
-    public void deleteById(int id) {
-        entityManager.remove(show(id));
+    public void deleteUserById(int id) {
+        entityManager.remove(getUserById(id));
     }
 }

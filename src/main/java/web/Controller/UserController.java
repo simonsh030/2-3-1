@@ -1,4 +1,4 @@
-package web.Controller;
+package web.controller;
 
 import web.Service.UserService;
 import web.model.User;
@@ -20,13 +20,13 @@ public class UserController {
 
     @GetMapping
     public String index(Model model) {
-        model.addAttribute("users", userService.index());
+        model.addAttribute("users", userService.getAllUsers());
         return "index";
     }
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
-        model.addAttribute("user", userService.show(id));
+        model.addAttribute("user", userService.getUserById(id));
         return "show";
     }
 
@@ -38,25 +38,25 @@ public class UserController {
 
     @PostMapping
     public String create(@ModelAttribute("user") User user) {
-        userService.save(user);
+        userService.saveUser(user);
         return "redirect:/users";
     }
 
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable("id") int id, Model model) {
-        model.addAttribute("user", userService.show(id));
+        model.addAttribute("user", userService.getUserById(id));
         return "edit";
     }
 
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("user") User user) {
-        userService.update(user);
+        userService.updateUser(user);
         return "redirect:/users";
     }
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") int id) {
-        userService.deleteById(id);
+        userService.deleteUserById(id);
         return "redirect:/users";
     }
 }

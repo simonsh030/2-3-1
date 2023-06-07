@@ -1,4 +1,4 @@
-package web.Config;
+package web.config;
 
 
 import org.springframework.web.filter.CharacterEncodingFilter;
@@ -18,8 +18,7 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
     }
 
 
-    // Добавление конфигурации, в которой инициализируем ViewResolver, для корректного отображения jsp.
-    @Override
+        @Override
     protected Class<?>[] getServletConfigClasses() {
         return new Class<?>[]{
                 WebConfig.class

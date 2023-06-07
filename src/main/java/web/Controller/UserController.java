@@ -1,6 +1,6 @@
 package web.controller;
 
-import web.Service.UserService;
+import web.service.UserService;
 import web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

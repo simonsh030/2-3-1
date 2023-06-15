@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+<div>
+    Id: <span th:text="${user.getId()}"></span><br />
+    Name: <span th:text="${user.getName()}"></span><br />
+    Last name: <span th:text="${user.getLastName()}"></span><br />
+    Email: <span th:text="${user.getEmail()}"></span><br />
+    <div>
+        <form class="pure-form" th:method="delete" th:action="@{/users/{id}(id=${user.getId()})}">
+
+            <a class="pure-button-secondary pure-button" th:href="@{/users/{id}/edit(id=${user.getId()})}">Edit</a>
+            <input class="pure-button-primary pure-button" type="submit" value="Delete">
+        </form>
+    </div>
+</div>
+</body>
+</html>

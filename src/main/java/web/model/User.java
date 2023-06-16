@@ -1,6 +1,8 @@
 package web.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Pattern;
 import java.util.Objects;
 
 @Entity
@@ -11,14 +13,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Pattern(regexp = "[A-Za-zА-Яа-я]+")
     @Column(name = "name")
     private String name;
 
+    @Pattern(regexp = "[A-Za-zА-Яа-я]+")
     @Column(name = "last_Name")
     private String lastName;
 
+    @Email
     @Column(name = "email")
     private String email;
+
 
     public User() {
     }

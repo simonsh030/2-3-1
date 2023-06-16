@@ -6,18 +6,29 @@
     <title>New user</title>
 </head>
 <body>
-<form class="pure-form pure-form-aligned" th:method="post" th:action="@{/users}" th:object="${user}">
+<form class="pure-form pure-form-aligned" th:object="${user}" th:action="@{/users}" method="post">
     <div class="pure-control-group">
-        <label th:for="name">Name:</label>
-        <input type="text" th:field="*{name}" />
+        <label th:for="name">Имя:</label>
+        <input type="text" id="name" th:field="*{name}" required pattern="[A-Za-zА-Яа-я]+" />
+        <div th:if="${#fields.hasErrors('name')}">
+            <p th:errors="*{name}"></p>
+        </div>
     </div>
+
     <div class="pure-control-group">
-        <label th:for="lastName">Last Name:</label>
-        <input type="text" th:field="*{lastName}" />
+        <label th:for="lastName">Фамилия:</label>
+        <input type="text" id="lastName" th:field="*{lastName}" required pattern="[A-Za-zА-Яа-я]+" />
+        <div th:if="${#fields.hasErrors('lastName')}">
+            <p th:errors="*{lastName}"></p>
+        </div>
     </div>
+
     <div class="pure-control-group">
-        <label th:for="email">Email: </label>
-        <input type="text" th:field="*{email}" />
+        <label th:for="email">Email:</label>
+        <input type="email" id="email" th:field="*{email}" required />
+        <div th:if="${#fields.hasErrors('email')}">
+            <p th:errors="*{email}"></p>
+        </div>
     </div>
 
     <div class="pure-control-group">
